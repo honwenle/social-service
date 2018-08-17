@@ -16,7 +16,19 @@
               信息服务
             </span>
             <div class="sub-nav">
-              <router-link v-for="item in typeList" :key="item.id" to="/list">{{item.cTitle}}</router-link>
+              <router-link
+                v-for="item in typeList"
+                :key="item.id"
+                :to="{
+                  path: 'list',
+                  query: {
+                    type: 0,
+                    id: item.id,
+                    title: item.cTitle
+                  }
+                }"
+                v-html="item.cTitle"
+              />
             </div>
           </div>
           <div class="nav-item">
@@ -36,10 +48,16 @@
               互动服务
             </span>
             <div class="sub-nav">
-              <router-link to="/list">咨询服务</router-link>
+              <router-link :to="{
+                path: 'list',
+                query: {type: 1}
+              }">咨询服务</router-link>
               <router-link to="/report">微动服务</router-link>
             </div>
           </div>
+        </div>
+        <div class="path">
+          当前位置：首页
         </div>
       </div>
     </div>
@@ -82,16 +100,6 @@ html,body{
   position: relative;
   z-index: 2;
 }
-@media screen and (max-width: 1024px) {
-  .top{
-    height: 130px;
-    background-size: cover;
-  }
-  .nav-item{
-    flex: 1;
-    font-size: 13px;
-  }
-}
 .wrap-width{
   max-width: 1000px;
   margin: auto;
@@ -100,7 +108,7 @@ html,body{
 }
 .nav {
   position: absolute;
-  bottom: 0;
+  bottom: 60px;
   background: #0d8ee9;
   width: 100%;
   display: flex;
@@ -133,5 +141,27 @@ html,body{
 }
 .sub-nav a{
   display: block;
+}
+.path{
+  position: absolute;
+  bottom: 0;
+  color: #0d8ee9;
+  font-size: 12px;
+}
+@media screen and (max-width: 1024px) {
+  .top{
+    height: 130px;
+    background-size: cover;
+  }
+  .nav-item{
+    flex: 1;
+    font-size: 13px;
+  }
+  .nav{
+    bottom: 0;
+  }
+  .path{
+    display: none;
+  }
 }
 </style>
