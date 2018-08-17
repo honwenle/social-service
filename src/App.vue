@@ -50,7 +50,7 @@
             <div class="sub-nav">
               <router-link :to="{
                 path: 'list',
-                query: {type: 1}
+                query: {type: 1, title: '咨询服务'}
               }">咨询服务</router-link>
               <router-link to="/report">微动服务</router-link>
             </div>
@@ -61,7 +61,7 @@
         </div>
       </div>
     </div>
-    <div class="wrap-width">
+    <div class="wrap-width body-content">
       <router-view/>
     </div>
   </div>
@@ -148,7 +148,40 @@ html,body{
   color: #0d8ee9;
   font-size: 12px;
 }
+.title-left{
+  font-size: 18px;
+  color: #df3216;
+  font-weight: bold;
+  padding: 15px 0;
+  border-bottom: 2px solid;
+  min-width: 120px;
+  float: left;
+}
+.title-right{
+  float: right;
+}
+.page-title{
+  border-bottom: 2px solid #f3f3f3;
+  overflow: hidden;
+}
+.row{
+  overflow: hidden;
+  padding: 5px 0;
+}
+.col{
+  float: left;
+}
+.col-left{
+  width: 70%;
+}
+.col-right{
+  width: 30%;
+  text-align: right;
+}
 @media screen and (max-width: 1024px) {
+  .body-content{
+    padding: 10px;
+  }
   .top{
     height: 130px;
     background-size: cover;
@@ -162,6 +195,10 @@ html,body{
   }
   .path{
     display: none;
+  }
+  .title-left{
+    padding: 6px 0;
+    font-weight: normal;
   }
 }
 </style>

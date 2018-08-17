@@ -2,11 +2,14 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+import router from './scripts/router'
 import axios from 'axios'
+require('./scripts/filter')
 
 import FontIcon from '@/components/font-icon'
+import PageTitle from '@/components/page-title'
 Vue.component('font-icon', FontIcon)
+Vue.component('page-title', PageTitle)
 
 Vue.config.productionTip = false
 axios.defaults.baseURL = 'http://47.105.116.152:5207'
