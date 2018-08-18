@@ -6,7 +6,7 @@
     <div class="list">
       <div class="row" v-for="item in dataList" :key="item.id">
         <div class="col col-left">{{item.cTitle}}</div>
-        <div class="col col-right">{{item.tDate | sqlDate}}</div>
+        <div class="col col-right">{{$route.query.type ? item.tPostDate : item.tReleaseDate | sqlDate}}</div>
       </div>
     </div>
   </div>
@@ -15,7 +15,8 @@
 export default {
   data() {
     return {
-      dataList: []
+      dataList: [],
+      pageIndex: 1
     }
   },
   mounted() {
@@ -35,7 +36,7 @@ export default {
       let {data} = await this.$http(['GetNewsPages', 'GetPostByPages'][this.$route.query.type], {
         params: {
           fCategoryId: this.$route.query.id,
-          pageIndex: 1,
+          pageIndex: this.pageIndex,
           pageSize: 10
         }
       })
