@@ -37,9 +37,9 @@
               技术服务
             </span>
             <div class="sub-nav">
-              <router-link to="/product">农资信息</router-link>
-              <router-link to="/source">农资溯源</router-link>
-              <router-link to="/source">农产品溯源</router-link>
+              <router-link :to="{path: '/product', query: {title: '农资信息'}}">农资信息</router-link>
+              <router-link :to="{path: '/source', query: {title: '农资溯源'}}">农资溯源</router-link>
+              <router-link :to="{path: '/source', query: {title: '农产品溯源'}}">农产品溯源</router-link>
             </div>
           </div>
           <div class="nav-item">
@@ -178,6 +178,12 @@ html,body{
   width: 30%;
   text-align: right;
 }
+.product-cell{
+  width: 50%;
+  float: left;
+  overflow: hidden;
+  margin: 10px 0;
+}
 @media screen and (max-width: 1024px) {
   .body-content{
     padding: 10px;
@@ -199,6 +205,9 @@ html,body{
   .title-left{
     padding: 6px 0;
     font-weight: normal;
+  }
+  .__w100p{
+    width: 100%;
   }
 }
 </style>

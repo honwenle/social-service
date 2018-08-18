@@ -1,7 +1,9 @@
 <template>
   <div>
     <page-title>
-      <div v-show="$route.query.type" class="bt">发起提问</div>
+      <div class="title-right">
+        <div v-show="$route.query.type" class="bt">发起提问</div>
+      </div>
     </page-title>
     <div class="list" v-if="dataList.length > 0">
       <div class="row" v-for="item in dataList" :key="item.id">
