@@ -184,6 +184,17 @@ html,body{
   overflow: hidden;
   margin: 10px 0;
 }
+.btn {
+  display: inline-block;
+  background: #0D8EE9;
+  padding: 5px 1em;
+  color: #fff;
+  border-radius: 3px;
+}
+.btn.btn-cancel{
+  background: #EEEEEE;
+  color: #959595;
+}
 @media screen and (max-width: 1024px) {
   .body-content{
     padding: 10px;

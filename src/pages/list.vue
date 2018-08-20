@@ -2,7 +2,7 @@
   <div>
     <page-title>
       <div class="title-right">
-        <div v-show="$route.query.type" class="bt">发起提问</div>
+        <div v-show="$route.query.type" class="btn" @click="isShowForm = true">发起提问</div>
       </div>
     </page-title>
     <div class="list" v-if="dataList.length > 0">
@@ -17,15 +17,21 @@
       <span>{{pageIndex}}/{{pageCount}}</span>
       <div class="nav-page-item" @click="pageIndex++">下一页</div>
     </div>
+    <ask-form :show.sync="isShowForm"></ask-form>
   </div>
 </template>
 <script>
+import AskForm from './ask-form'
 export default {
+  components: {
+    AskForm
+  },
   data() {
     return {
       dataList: [],
       pageIndex: 1,
-      pageCount: 1
+      pageCount: 1,
+      isShowForm: false
     }
   },
   mounted() {
