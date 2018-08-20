@@ -8,16 +8,13 @@
         发起提问
         <div class="form">
           <div class="form-row">
-            <span class="label">标题：</span>
-            <input v-model="formData.cTitle" placeholder="请输入" type="text">
+            <span class="label">标题：</span><input v-model="formData.cTitle" placeholder="请输入" type="text">
           </div>
           <div class="form-row">
-            <span class="label">描述：</span>
-            <textarea v-model="formData.cContent" placeholder="请输入" rows="5"></textarea>
+            <span class="label">描述：</span><textarea v-model="formData.cContent" placeholder="请输入" rows="5"></textarea>
           </div>
           <div class="form-row">
-            <span class="label">姓名：</span>
-            <input v-model="formData.cPosterName" placeholder="请输入" type="text">
+            <span class="label">姓名：</span><input v-model="formData.cPosterName" placeholder="请输入" type="text">
           </div>
         </div>
         <div>
@@ -59,6 +56,7 @@ export default {
   height: 25px;
 }
 .form-row input, .form-row textarea{
+  box-sizing: border-box;
   width: 80%;
   padding: 0;
   border: none;
@@ -68,6 +66,7 @@ export default {
 }
 .form-row .label{
   width: 20%;
+  display: inline-block;
 }
 .mask{
   position: fixed;
@@ -83,6 +82,7 @@ export default {
   display: table;
   z-index: 501;
   width: 75%;
+  max-width: 666px;
   top: 0;
   right: 0;
   bottom: 0;

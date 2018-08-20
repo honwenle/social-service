@@ -93,6 +93,9 @@ export default {
 html,body{
   margin: 0;
 }
+.center{
+  text-align: center;
+}
 .top{
   background: url('./assets/top.png');
   background-position: center;
@@ -185,6 +188,7 @@ html,body{
   margin: 10px 0;
 }
 .btn {
+  cursor: pointer;
   display: inline-block;
   background: #0D8EE9;
   padding: 5px 1em;
