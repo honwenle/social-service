@@ -52,7 +52,7 @@
                 path: 'list',
                 query: {type: 1, title: '咨询服务'}
               }">咨询服务</router-link>
-              <router-link to="/report">微动服务</router-link>
+              <router-link :to="{path: '/report', query: {title: '微动服务'}}">微动服务</router-link>
             </div>
           </div>
         </div>

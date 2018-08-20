@@ -1,5 +1,6 @@
 <template>
   <div>
+    <page-title></page-title>
     <div class="report-content">
       <div class="product-cell __w100p">
         <div class="label">举报标题</div>
