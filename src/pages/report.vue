@@ -19,12 +19,12 @@
       </div>
       <div class="product-cell __w100p">
         <div class="label">附件</div>
-        <img v-show="formData.cPic" :src="formData.cPic" alt="上传" class="value">
+        <img v-show="imgPath" :src="imgPath" alt="上传" class="value">
         <input @change="upload" placeholder="请输入" type="file" class="value">
       </div>
     </div>
     <div class="center">
-      <div class="btn" @click="submitPost">发起举报</div>
+      <div class="btn" @click="clickSubmit">发起举报</div>
     </div>
   </div>
 </template>
@@ -32,25 +32,42 @@
 export default {
   data() {
     return {
-      formData: {
-        cPic: ''
-      }
+      formData: {},
+      imgPath: ''
     }
   },
   methods: {
     upload(e) {
       let reader = new FileReader()
       reader.onload = (e) => {
-        console.log(e.target.result)
-        this.formData.cPic = e.target.result
+        this.imgPath = e.target.result
       }
       reader.readAsDataURL(e.target.files[0])
+    },
+    clickSubmit() {
+      if (this.imgPath) {
+        this.submitImg()
+      } else {
+        this.submitPost()
+      }
+    },
+    async submitImg() {
+      let {data} = await this.$http.post('api/Upload', {
+        basePicString: this.imgPath
+      })
+      if (data.Code == 10000) {
+        this.formData.cPic = data.Content.src
+        this.submitPost()
+      } else {
+        alert(data.Message)
+      }
     },
     async submitPost() {
       let {data} = await this.$http.post('AddReportedInfo', this.formData)
       if (data.Code == 10000) {
         alert('提交成功')
         this.formData = {}
+        this.imgPath = ''
       } else {
         alert(data.Message)
       }
