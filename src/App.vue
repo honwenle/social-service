@@ -38,8 +38,8 @@
             </span>
             <div class="sub-nav">
               <router-link :to="{path: '/product', query: {title: '农资信息'}}">农资信息</router-link>
-              <router-link :to="{path: '/source', query: {title: '农资溯源'}}">农资溯源</router-link>
-              <router-link :to="{path: '/source', query: {title: '农产品溯源'}}">农产品溯源</router-link>
+              <router-link :to="{path: '/source', query: {title: '农资溯源', type: 0}}">农资溯源</router-link>
+              <router-link :to="{path: '/source', query: {title: '农产品溯源', type: 1}}">农产品溯源</router-link>
             </div>
           </div>
           <div class="nav-item">
