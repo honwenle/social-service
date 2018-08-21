@@ -202,6 +202,15 @@ html,body{
   background: #EEEEEE;
   color: #959595;
 }
+.logo-title {
+  padding: 45px;
+  font-size: 30px;
+  color: #DF3216;
+}
+.sub-title {
+  font-size: 14px;
+  color: #000;
+}
 @media screen and (max-width: 1024px) {
   .body-content{
     padding: 10px;
@@ -226,6 +235,9 @@ html,body{
   }
   .__w100p{
     width: 100% !important;
+  }
+  .logo-title{
+    padding: 12px 5%;
   }
 }
 </style>
