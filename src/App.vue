@@ -96,6 +96,9 @@ html,body{
 .center{
   text-align: center;
 }
+.ov{
+  overflow: hidden;
+}
 .top{
   background: url('./assets/top.png');
   background-position: center;
@@ -222,7 +225,7 @@ html,body{
     font-weight: normal;
   }
   .__w100p{
-    width: 100%;
+    width: 100% !important;
   }
 }
 </style>

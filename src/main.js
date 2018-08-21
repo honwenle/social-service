@@ -6,6 +6,10 @@ import router from './scripts/router'
 import axios from 'axios'
 require('./scripts/filter')
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper)
+
 import FontIcon from '@/components/font-icon'
 import PageTitle from '@/components/page-title'
 Vue.component('font-icon', FontIcon)
