@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './scripts/router'
+import store from './scripts/store'
 import axios from 'axios'
 require('./scripts/filter')
 
@@ -25,6 +26,7 @@ Vue.prototype.$baseUrl = baseurl + '/'
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

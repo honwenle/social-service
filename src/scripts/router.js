@@ -5,6 +5,7 @@ import list from '@/pages/list'
 import product from '@/pages/product'
 import report from '@/pages/report'
 import source from '@/pages/source'
+import detail from '@/pages/detail'
 
 Vue.use(Router)
 
@@ -29,6 +30,10 @@ export default new Router({
     {
       path: '/source',
       component: source
+    },
+    {
+      path: '/detail',
+      component: detail
     }
   ]
 })

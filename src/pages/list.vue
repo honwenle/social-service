@@ -6,7 +6,7 @@
       </div>
     </page-title>
     <div class="list" v-if="dataList.length > 0">
-      <div class="row" v-for="item in dataList" :key="item.id">
+      <div class="row" v-for="item in dataList" :key="item.id" @click="goDetail(item)">
         <div class="col col-left">{{item.cTitle}}</div>
         <div class="col col-right">{{$route.query.type ? item.tPostDate : item.tReleaseDate | sqlDate}}</div>
       </div>
@@ -52,6 +52,10 @@ export default {
     }
   },
   methods: {
+    goDetail(item) {
+      this.$store.commit('setDetail', item)
+      this.$router.push('detail')
+    },
     init() {
       this.pageIndex = 1
       this.dataList = []
