@@ -15,9 +15,11 @@ import PageTitle from '@/components/page-title'
 Vue.component('font-icon', FontIcon)
 Vue.component('page-title', PageTitle)
 
+let baseurl = 'http://47.105.116.152:5207'
 Vue.config.productionTip = false
-axios.defaults.baseURL = 'http://47.105.116.152:5207'
+axios.defaults.baseURL = baseurl
 Vue.prototype.$http = axios
+Vue.prototype.$baseUrl = baseurl + '/'
 
 /* eslint-disable no-new */
 new Vue({

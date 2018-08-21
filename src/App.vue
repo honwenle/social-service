@@ -93,6 +93,9 @@ export default {
 html,body{
   margin: 0;
 }
+img{
+  max-width: 100%;
+}
 .center{
   text-align: center;
 }
@@ -170,6 +173,12 @@ html,body{
   border-bottom: 2px solid #f3f3f3;
   overflow: hidden;
 }
+.title-more{
+  text-align: right;
+  line-height: 50px;
+  font-size: 14px;
+  color: #666;
+}
 .row{
   overflow: hidden;
   padding: 5px 0;
@@ -235,6 +244,9 @@ html,body{
   }
   .__w100p{
     width: 100% !important;
+  }
+  .__hidden{
+    display: none !important;
   }
   .logo-title{
     padding: 12px 5%;

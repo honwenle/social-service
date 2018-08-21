@@ -2,11 +2,11 @@
   <div class="ov">
     <div class="home-left home-col __w100p">
       <div class="part" v-if="dataInfo.Part1">
-        <div class="h1">{{dataInfo.Part1.NewsTitle}}</div>
+        <div class="h1 __hidden">{{dataInfo.Part1.NewsTitle}}</div>
         <div class="list">
           <div class="item __w100p" v-for="item in dataInfo.Part1.NewsContent" :key="item.id">
             <div class="img">
-              <img :src="item.cPic" alt="">
+              <img :src="$baseUrl + item.cPic" alt="">
             </div>
             <div class="text">
               <div class="row">{{item.cTitle}}</div>
@@ -17,11 +17,11 @@
         </div>
       </div>
       <div class="part" v-if="dataInfo.Part2">
-        <div class="h1">{{dataInfo.Part2.NewsTitle}}</div>
+        <div class="h1 __hidden">{{dataInfo.Part2.NewsTitle}}</div>
         <div class="list">
           <div class="item __w100p" v-for="item in dataInfo.Part2.NewsContent" :key="item.id">
             <div class="img">
-              <img :src="item.cPic" alt="">
+              <img :src="$baseUrl + item.cPic" alt="">
             </div>
             <div class="text">
               <div class="row">{{item.cTitle}}</div>
@@ -38,7 +38,9 @@
           autoplay: true
         }">
           <swiper-slide v-for="item in dataInfo.Part3.NewsContent" :key="item.id">
-            <div class="swiper-item" :style="`background: url(${item.cPic})`"></div>
+            <div class="swiper-item" :style="`background: url(${$baseUrl + item.cPic})`">
+              <div class="swiper-title">{{item.cTitle}}</div>
+            </div>
           </swiper-slide>
           <div class="swiper-pagination" slot="pagination"></div>
         </swiper>
@@ -46,7 +48,7 @@
       <div class="part" v-if="dataInfo.Part4">
         <div class="page-title">
           <div class="title-left">{{dataInfo.Part4.NewsTitle}}</div>
-          <div>更多</div>
+          <div class="title-more">更多&gt;</div>
         </div>
         <div class="list2">
           <div class="item" v-for="item in dataInfo.Part4.NewsContent" :key="item.id">
@@ -61,9 +63,9 @@
         <div class="h2">{{dataInfo.Part5.NewsTitle}}</div>
         <div class="list3">
           <div class="item" v-for="item in dataInfo.Part5.NewsContent" :key="item.id">
-            <div>{{item.cTitle}}</div>
-            <div><img :src="item.cPic" alt=""></div>
-            <div>{{item.cSubtitle}}</div>
+            <div class="row-item">{{item.cTitle}}</div>
+            <div class="row-item"><img :src="$baseUrl + item.cPic" alt=""></div>
+            <div class="row-item">{{item.cSubtitle}}</div>
           </div>
         </div>
       </div>
@@ -71,9 +73,9 @@
         <div class="h2">{{dataInfo.Part6.NewsTitle}}</div>
         <div class="list3">
           <div class="item" v-for="item in dataInfo.Part6.NewsContent" :key="item.id">
-            <div>{{item.cTitle}}</div>
-            <div><img :src="item.cPic" alt=""></div>
-            <div>{{item.cSubtitle}}</div>
+            <div class="row-item">{{item.cTitle}}</div>
+            <div class="row-item"><img :src="$baseUrl + item.cPic" alt=""></div>
+            <div class="row-item">{{item.cSubtitle}}</div>
           </div>
         </div>
       </div>
@@ -105,16 +107,95 @@ export default {
   float: left;
 }
 .home-left{
-  width: 76%;
+  width: 74%;
+  padding-right: 2%;
 }
 .home-right{
   width: 24%;
 }
 .list{
   overflow: hidden;
+  margin-bottom: 10px;
 }
 .list .item{
   float: left;
   width: 50%;
+  overflow: hidden;
+  margin: 5px 0;
+}
+.list .row{
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.list .img {
+  width: 80px;
+  float: left;
+  margin-right: 5px;
+}
+.list .text {
+  float: left;
+}
+.h1 {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px 0;
+}
+.swiper-item {
+  height: 150px;
+}
+.swiper-title{
+  position: absolute;
+  bottom: 25px;
+  left: 10%;
+  font-weight: bold;
+  color: #fff;
+}
+.list2 .item{
+  overflow: hidden;
+  padding: 2px 0;
+  font-size: 14px;
+}
+.list2 .item-left, .list2 .item-right{
+  float: left;
+}
+.list2 .item-left{
+  width: 75%;
+}
+.list2 .item-right{
+  width: 25%;
+  text-align: right;
+}
+.h2 {
+  margin: 15px 0;
+}
+.h2:before {
+  content: '';
+  border-left: 5px solid #df3216;
+  margin-right: 5px;
+}
+.list3 .item{
+  font-size: 14px;
+  padding: 5px 0;
+  border-top: 1px solid #ddd;
+}
+.list3 .row-item{
+  padding: 5px 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1024px) {
+  .list .item:nth-child(3),.list .item:nth-child(4){
+    display: none;
+  }
+  .list3{
+    overflow: auto;
+    white-space: nowrap;
+  }
+  .list3 .item{
+    width: 33%;
+    display: inline-block;
+  }
 }
 </style>
