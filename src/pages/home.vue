@@ -4,7 +4,7 @@
       <div class="part" v-if="dataInfo.Part1">
         <div class="h1 __hidden">{{dataInfo.Part1.NewsTitle}}</div>
         <div class="list">
-          <div class="item __w100p" v-for="item in dataInfo.Part1.NewsContent" :key="item.id">
+          <div class="item __w100p" @click="goDetail(item)" v-for="item in dataInfo.Part1.NewsContent" :key="item.id">
             <div class="img">
               <img :src="$baseUrl + item.cPic" alt="">
             </div>
@@ -19,7 +19,7 @@
       <div class="part" v-if="dataInfo.Part2">
         <div class="h1 __hidden">{{dataInfo.Part2.NewsTitle}}</div>
         <div class="list">
-          <div class="item __w100p" v-for="item in dataInfo.Part2.NewsContent" :key="item.id">
+          <div class="item __w100p" @click="goDetail(item)" v-for="item in dataInfo.Part2.NewsContent" :key="item.id">
             <div class="img">
               <img :src="$baseUrl + item.cPic" alt="">
             </div>
@@ -37,7 +37,7 @@
           loop: true,
           autoplay: true
         }">
-          <swiper-slide v-for="item in dataInfo.Part3.NewsContent" :key="item.id">
+          <swiper-slide @click.native="goDetail(item)" v-for="item in dataInfo.Part3.NewsContent" :key="item.id">
             <div class="swiper-item" :style="`background: url(${$baseUrl + item.cPic})`">
               <div class="swiper-title">{{item.cTitle}}</div>
             </div>
@@ -51,7 +51,7 @@
           <div class="title-more">更多&gt;</div>
         </div>
         <div class="list2">
-          <div class="item" v-for="item in dataInfo.Part4.NewsContent" :key="item.id">
+          <div class="item" @click="goDetail(item)" v-for="item in dataInfo.Part4.NewsContent" :key="item.id">
             <div class="item-left">{{item.cTitle}}</div>
             <div class="item-right">{{item.tReleaseDate | sqlDate}}</div>
           </div>
@@ -62,7 +62,7 @@
       <div class="part" v-if="dataInfo.Part5">
         <div class="h2">{{dataInfo.Part5.NewsTitle}}</div>
         <div class="list3">
-          <div class="item" v-for="item in dataInfo.Part5.NewsContent" :key="item.id">
+          <div class="item" @click="goDetail(item)" v-for="item in dataInfo.Part5.NewsContent" :key="item.id">
             <div class="row-item">{{item.cTitle}}</div>
             <div class="row-item"><img :src="$baseUrl + item.cPic" alt=""></div>
             <div class="row-item">{{item.cSubtitle}}</div>
@@ -72,7 +72,7 @@
       <div class="part" v-if="dataInfo.Part6">
         <div class="h2">{{dataInfo.Part6.NewsTitle}}</div>
         <div class="list3">
-          <div class="item" v-for="item in dataInfo.Part6.NewsContent" :key="item.id">
+          <div class="item" @click="goDetail(item)" v-for="item in dataInfo.Part6.NewsContent" :key="item.id">
             <div class="row-item">{{item.cTitle}}</div>
             <div class="row-item"><img :src="$baseUrl + item.cPic" alt=""></div>
             <div class="row-item">{{item.cSubtitle}}</div>
@@ -93,6 +93,10 @@ export default {
     this.getData()
   },
   methods: {
+    goDetail(item) {
+      this.$store.commit('setDetail', item)
+      this.$router.push('detail')
+    },
     async getData() {
       let {data} = await this.$http('GetFirstPageNews')
       if (data.Code == 10000) {
