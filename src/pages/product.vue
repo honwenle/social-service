@@ -1,9 +1,14 @@
 <template>
   <div>
     <page-title>
-      <div class="search">
-        <input v-model="keyword" placeholder="请输入PD码、产品名称查询" type="text">
-        <button @click="getData">查询</button>
+      <div class="title-right">
+        <div class="search">
+          <div class="search-icon">
+            <font-icon name="search"></font-icon>
+          </div>
+          <input v-model="keyword" placeholder="请输入PD码、产品名称查询" type="text">
+          <button @click="getData">查询</button>
+        </div>
       </div>
     </page-title>
     <div class="content" v-show="dataInfo.id">

@@ -1,9 +1,14 @@
 <template>
   <div>
     <page-title>
-      <div class="search">
-        <input v-model="keyword" placeholder="请输入溯源码查询" type="text">
-        <button @click="getList">查询</button>
+      <div class="title-right">
+        <div class="search">
+          <div class="search-icon">
+            <font-icon name="search"></font-icon>
+          </div>
+          <input v-model="keyword" placeholder="请输入溯源码查询" type="text">
+          <button @click="getList">查询</button>
+        </div>
       </div>
     </page-title>
     <div class="content" v-show="dataList">

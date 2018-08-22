@@ -56,7 +56,7 @@
             </div>
           </div>
         </div>
-        <div class="path">
+        <div class="path __hidden">
           当前位置：首页
         </div>
       </div>
@@ -220,6 +220,37 @@ img{
   font-size: 14px;
   color: #000;
 }
+
+.search {
+  overflow: hidden;
+}
+.search-icon{
+  padding: 0 10px;
+  border: 1px solid #ddd;
+  border-right: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.search button{
+  background: #0d8de9;
+  border: none;
+  color: #fff;
+  padding: 0 15px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.search input{
+  border: none;
+  padding: 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.search input, .search button, .search-icon {
+  float: left;
+  height: 31px;
+  line-height: 31px;
+  box-sizing: border-box;
+}
 @media screen and (max-width: 1024px) {
   .body-content{
     padding: 10px;
@@ -235,9 +266,6 @@ img{
   .nav{
     bottom: 0;
   }
-  .path{
-    display: none;
-  }
   .title-left{
     padding: 6px 0;
     font-weight: normal;
@@ -250,6 +278,9 @@ img{
   }
   .logo-title{
     padding: 12px 5%;
+  }
+  .search input{
+    width: 130px;
   }
 }
 </style>
