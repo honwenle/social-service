@@ -126,6 +126,7 @@ export default {
   width: 50%;
   overflow: hidden;
   margin: 5px 0;
+  cursor: pointer;
 }
 .list .row{
   padding: 0;
