@@ -126,6 +126,8 @@ export default {
   width: 50%;
   overflow: hidden;
   margin: 5px 0;
+}
+.item{
   cursor: pointer;
 }
 .list .row{

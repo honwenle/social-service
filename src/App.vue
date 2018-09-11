@@ -3,22 +3,20 @@
     <div class="top">
       <div class="wrap-width">
         <div class="logo-title">社会公众服务平台<div class="sub-title">SHEHUIGONGZHONGFUWUPINGTAI</div></div>
-        <div class="nav">
-          <div class="nav-item">
-            <router-link to="/">
-              <font-icon name="home"></font-icon>
-              首页
-            </router-link>
-          </div>
-          <div class="nav-item">
-            <span>
-              <font-icon name="barrage"></font-icon>
-              信息服务
-            </span>
-            <div class="sub-nav">
+        <div class="nav-pos">
+          <div class="nav">
+            <div class="nav-item">
+              <router-link to="/">
+                首页
+              </router-link>
+            </div>
+            <div class="nav-item" @mouseover="showSub = true" @mouseout="showSub = false">
+              <span>
+                信息服务
+              </span>
+            </div>
+            <div class="nav-item" v-if="item.fIsShow" v-for="item in typeList" :key="item.id">
               <router-link
-                v-for="item in typeList"
-                :key="item.id"
                 :to="{
                   path: 'list',
                   query: {
@@ -30,30 +28,40 @@
                 v-html="item.cTitle"
               />
             </div>
-          </div>
-          <div class="nav-item">
-            <span>
-              <font-icon name="pc"></font-icon>
-              技术服务
-            </span>
-            <div class="sub-nav">
+            <div class="nav-item">
               <router-link :to="{path: '/product', query: {title: '农资信息'}}">农资信息</router-link>
+            </div>
+            <div class="nav-item">
               <router-link :to="{path: '/source', query: {title: '农资溯源', type: 0}}">农资溯源</router-link>
+            </div>
+            <div class="nav-item">
               <router-link :to="{path: '/source', query: {title: '农产品溯源', type: 1}}">农产品溯源</router-link>
             </div>
-          </div>
-          <div class="nav-item">
-            <span>
-              <font-icon name="message"></font-icon>
-              互动服务
-            </span>
-            <div class="sub-nav">
+            <div class="nav-item">
               <router-link :to="{
                 path: 'list',
                 query: {type: 1, title: '咨询服务'}
               }">咨询服务</router-link>
+            </div>
+            <div class="nav-item">
               <router-link :to="{path: '/report', query: {title: '微动服务'}}">微动服务</router-link>
             </div>
+          </div>
+          <div class="sub-nav" v-show="showSub">
+            <router-link
+              v-if="!item.fIsShow"
+              v-for="item in typeList"
+              :key="item.id"
+              :to="{
+                path: 'list',
+                query: {
+                  type: 0,
+                  id: item.id,
+                  title: item.cTitle
+                }
+              }"
+              v-html="item.cTitle"
+            />
           </div>
         </div>
         <div class="path __hidden">
@@ -72,7 +80,8 @@ export default {
   name: 'App',
   data() {
     return {
-      typeList: []
+      typeList: [],
+      showSub: false
     }
   },
   mounted() {
@@ -115,15 +124,18 @@ img{
   position: relative;
   height: 100%;
 }
-.nav {
+.nav-pos{
   position: absolute;
   bottom: 60px;
-  background: #0d8ee9;
   width: 100%;
-  display: flex;
-  color: #fff;
 }
-.nav a{
+.nav {
+  background: #0d8ee9;
+  color: #fff;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.nav-pos a{
   color: #fff;
   text-decoration: none;
 }
@@ -131,16 +143,17 @@ img{
   padding: 10px;
   position: relative;
   text-align: center;
+  display: inline-block;
 }
 .sub-nav{
-  display: none;
   background: #0e84d7;
   position: absolute;
   font-size: 14px;
   top: 100%;
-  left: 0;
-  width: 100%;
+  left: 50px;
   line-height: 2;
+  z-index: 1;
+  padding: 5px;
 }
 .nav-item:hover{
   background: #0e84d7;
@@ -263,7 +276,7 @@ img{
     flex: 1;
     font-size: 13px;
   }
-  .nav{
+  .nav-pos{
     bottom: 0;
   }
   .title-left{
