@@ -5,8 +5,7 @@
         <div class="h1 __hidden">{{dataInfo.Part1.NewsTitle}}</div>
         <div class="list">
           <div class="item __w100p" @click="goDetail(item)" v-for="item in dataInfo.Part1.NewsContent" :key="item.id">
-            <div class="img">
-              <img :src="$baseUrl + item.cPic" alt="">
+            <div class="img" :style="{backgroundImage: `url(${$baseUrl + item.cPic})`}">
             </div>
             <div class="text">
               <div class="row">{{item.cTitle}}</div>
@@ -20,8 +19,7 @@
         <div class="h1 __hidden">{{dataInfo.Part2.NewsTitle}}</div>
         <div class="list">
           <div class="item __w100p" @click="goDetail(item)" v-for="item in dataInfo.Part2.NewsContent" :key="item.id">
-            <div class="img">
-              <img :src="$baseUrl + item.cPic" alt="">
+            <div class="img" :style="{backgroundImage: `url(${$baseUrl + item.cPic})`}">
             </div>
             <div class="text">
               <div class="row">{{item.cTitle}}</div>
@@ -125,7 +123,7 @@ export default {
   float: left;
   width: 50%;
   overflow: hidden;
-  margin: 5px 0;
+  margin: 10px 0;
 }
 .item{
   cursor: pointer;
@@ -137,15 +135,26 @@ export default {
 .list .row{
   padding: 0;
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.list .row:first-child{
+  font-size: 18px;
 }
 .list .img {
-  width: 80px;
+  width: 25%;
   float: left;
-  margin-right: 5px;
+  padding-bottom: 25%;
+  height: 0;
+  background-size: cover;
 }
 .list .text {
   float: left;
+  width: 75%;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 .h1 {
   font-size: 20px;
