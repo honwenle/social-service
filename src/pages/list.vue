@@ -81,6 +81,13 @@ export default {
 .list{
   min-height: 400px;
 }
+.row{
+  cursor: pointer;
+  transition: color .3s;
+}
+.row:hover{
+  color: #0d8de9;
+}
 .nav-page{
   text-align: center;
   padding: 15px 0;

@@ -129,6 +129,10 @@ export default {
 }
 .item{
   cursor: pointer;
+  transition: color .3s;
+}
+.item:hover{
+  color: #0d8de9;
 }
 .list .row{
   padding: 0;

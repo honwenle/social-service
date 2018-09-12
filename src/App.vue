@@ -47,7 +47,7 @@
               <router-link :to="{path: '/report', query: {title: '微动服务'}}">微动服务</router-link>
             </div>
           </div>
-          <div class="sub-nav" v-show="showSub">
+          <div class="sub-nav" v-show="showSub" @mouseover="showSub = true" @mouseout="showSub = false">
             <router-link
               v-if="!item.fIsShow"
               v-for="item in typeList"
