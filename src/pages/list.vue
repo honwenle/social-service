@@ -2,13 +2,13 @@
   <div>
     <page-title>
       <div class="title-right">
-        <div v-show="$route.query.type" class="btn" @click="isShowForm = true">发起提问</div>
+        <div v-show="$route.query.type != '0'" class="btn" @click="isShowForm = true">发起提问</div>
       </div>
     </page-title>
     <div class="list" v-if="dataList.length > 0">
       <div class="row" v-for="item in dataList" :key="item.id" @click="goDetail(item)">
         <div class="col col-left">{{item.cTitle}}</div>
-        <div class="col col-right">{{$route.query.type ? item.tPostDate : item.tReleaseDate | sqlDate}}</div>
+        <div class="col col-right">{{$route.query.type != '0' ? item.tPostDate : item.tReleaseDate | sqlDate}}</div>
       </div>
     </div>
     <div v-else>暂无记录</div>
@@ -96,5 +96,6 @@ export default {
 }
 .nav-page-item{
   display: inline-block;
+  cursor: pointer;
 }
 </style>

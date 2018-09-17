@@ -5,7 +5,7 @@
     </transition>
     <transition name="tran-dialog">
       <div v-show="show" class="box">
-        发起提问
+        <h2>发起提问</h2>
         <div class="form">
           <div class="form-row">
             <span class="label">标题：</span><input v-model="formData.cTitle" placeholder="请输入" type="text">
@@ -38,11 +38,15 @@ export default {
       this.$emit('update:show', false)
     },
     async submitPost() {
-      let {data} = await this.$http.post('AddPostInfo', this.formData)
-      if (data.Code == 10000) {
-        this.hide()
-      } else {
-        alert(data.Message)
+      let ok = confirm('确认提交？')
+      if (ok) {
+        let {data} = await this.$http.post('AddPostInfo', this.formData)
+        if (data.Code == 10000) {
+          alert('提交成功')
+          this.hide()
+        } else {
+          alert(data.Message)
+        }
       }
     }
   }
@@ -58,7 +62,7 @@ export default {
 .form-row input, .form-row textarea{
   box-sizing: border-box;
   width: 80%;
-  padding: 0;
+  padding: 5px;
   border: none;
   border: 1px solid #c5c5c5;
   vertical-align: text-top;
@@ -67,6 +71,8 @@ export default {
 .form-row .label{
   width: 20%;
   display: inline-block;
+  text-align: left;
+  font-size: 18px;
 }
 .mask{
   position: fixed;
@@ -92,7 +98,7 @@ export default {
   border-radius: 3px;
   overflow: hidden;
   background: #fff;
-  padding: 15px 10px;
+  padding: 20px;
 }
 .tran-dialog-enter-active {
   animation: tran-dialog-in .5s;

@@ -46,7 +46,14 @@
       <div class="part" v-if="dataInfo.Part4">
         <div class="page-title">
           <div class="title-left">{{dataInfo.Part4.NewsTitle}}</div>
-          <div class="title-more">更多&gt;</div>
+          <div class="title-more" @click="$router.push({
+            path: 'list',
+            query: {
+              type: 0,
+              id: 5,
+              title: '农业专题课程'
+            }
+          })">更多&gt;</div>
         </div>
         <div class="list2">
           <div class="item" @click="goDetail(item)" v-for="item in dataInfo.Part4.NewsContent" :key="item.id">
@@ -61,9 +68,9 @@
         <div class="h2">{{dataInfo.Part5.NewsTitle}}</div>
         <div class="list3">
           <div class="item" @click="goDetail(item)" v-for="item in dataInfo.Part5.NewsContent" :key="item.id">
-            <div class="row-item">{{item.cTitle}}</div>
-            <div class="row-item"><img :src="$baseUrl + item.cPic" alt=""></div>
-            <div class="row-item">{{item.cSubtitle}}</div>
+            <div class="row-item title">{{item.cTitle}}</div>
+            <div class="row-item" v-show="item.cPic"><img :src="$baseUrl + item.cPic" alt=""></div>
+            <div class="row-item" v-show="item.cSubtitle">{{item.cSubtitle}}</div>
           </div>
         </div>
       </div>
@@ -71,9 +78,9 @@
         <div class="h2">{{dataInfo.Part6.NewsTitle}}</div>
         <div class="list3">
           <div class="item" @click="goDetail(item)" v-for="item in dataInfo.Part6.NewsContent" :key="item.id">
-            <div class="row-item">{{item.cTitle}}</div>
-            <div class="row-item"><img :src="$baseUrl + item.cPic" alt=""></div>
-            <div class="row-item">{{item.cSubtitle}}</div>
+            <div class="row-item title">{{item.cTitle}}</div>
+            <div class="row-item" v-show="item.cPic"><img :src="$baseUrl + item.cPic" alt=""></div>
+            <div class="row-item" v-show="item.cSubtitle">{{item.cSubtitle}}</div>
           </div>
         </div>
       </div>
@@ -125,7 +132,7 @@ export default {
   overflow: hidden;
   margin: 10px 0;
 }
-.item{
+.item, .title-more, .swiper-container{
   cursor: pointer;
   transition: color .3s;
 }
@@ -201,8 +208,13 @@ export default {
 }
 .list3 .row-item{
   padding: 5px 0;
+  color: #666;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+.list3 .row-item.title{
+  font-size: 16px;
+  color: #000;
 }
 
 @media screen and (max-width: 1024px) {

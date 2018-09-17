@@ -1,8 +1,8 @@
 <template>
   <div class="fz14">
-    <div class="h1">{{detail.cTitle}}</div>
-    <div class="h2">发布人：{{detail.cReleaseUserName}}</div>
-    <div class="h2">发布时间：{{detail.tReleaseDate | sqlDate}}</div>
+    <div class="h1">{{detail.cTitle}}</div><br>
+    <div class="h2">发布人：{{detail.cReleaseUserName}}</div><br>
+    <div class="h2">发布时间：{{detail.tReleaseDate | sqlDate}}</div><br><br>
     <div v-html="detail.cContent"></div>
   </div>
 </template>

@@ -15,17 +15,17 @@
         <input v-model="formData.cReportedAddress" placeholder="请输入" type="text" class="value">
       </div>
       <div class="product-cell __w100p">
-        <div class="label">举报内容</div>
-        <textarea v-model="formData.cContent" placeholder="请输入" rows="5" class="value" />
-      </div>
-      <div class="product-cell __w100p">
         <div class="label">附件</div>
         <img v-show="imgPath" :src="imgPath" alt="上传" class="value">
         <input @change="upload" placeholder="请输入" type="file" class="value">
       </div>
-    </div>
-    <div class="center">
-      <div class="btn" @click="clickSubmit">发起举报</div>
+      <div class="product-cell __w100p">
+        <div class="label">举报内容</div>
+        <textarea v-model="formData.cContent" placeholder="请输入" rows="5" class="value" />
+      </div>
+      <div class="center" style="clear: both;">
+        <div class="btn" @click="clickSubmit">发起举报</div>
+      </div>
     </div>
   </div>
 </template>
@@ -46,10 +46,13 @@ export default {
       reader.readAsDataURL(e.target.files[0])
     },
     clickSubmit() {
-      if (this.imgPath) {
-        this.submitImg()
-      } else {
-        this.submitPost()
+      let ok = confirm('确认提交？')
+      if (ok) {
+        if (this.imgPath) {
+          this.submitImg()
+        } else {
+          this.submitPost()
+        }
       }
     },
     async submitImg() {
@@ -79,8 +82,10 @@ export default {
 
 <style>
 .report-content{
-  padding: 15px 0;
   overflow: hidden;
+  border: 1px solid #e6e6e6;
+  margin-top: 20px;
+  padding: 15px;
 }
 .report-content input{
   height: 25px;

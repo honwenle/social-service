@@ -64,9 +64,9 @@
             />
           </div>
         </div>
-        <div class="path __hidden">
+        <!-- <div class="path __hidden">
           当前位置：首页
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="wrap-width body-content">
@@ -112,7 +112,7 @@ img{
   overflow: hidden;
 }
 .top{
-  background: url('./assets/top.png');
+  background: url('./assets/top.png') no-repeat;
   background-position: center;
   height: 260px;
   position: relative;
