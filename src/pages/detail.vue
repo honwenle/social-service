@@ -8,9 +8,17 @@
 </template>
 <script>
 export default {
-  computed: {
-    detail() {
-      return this.$store.state.detailData
+  data() {
+    return {
+      detail: {}
+    }
+  },
+  async mounted() {
+    let {data} = await this.$http('GetContent', {
+      params: {id: this.$route.query.id}
+    })
+    if (data.Code == 10000) {
+      this.detail = data.Content
     }
   }
 }
